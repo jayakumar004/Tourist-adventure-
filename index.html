@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore World</title>
+
+
+  <meta name="description" content="Join Explore World to explore stunning destinations like deserts, mountains, and hidden shores." />
+  <meta property="og:title" content="Explore World" />
+  <meta property="og:description" content="Travel to see life from a new perspective. Join our adventures now!" />
+  <meta property="og:image" content="preview.jpg" />
+  <meta property="og:url" content="https://yourwebsite.com" />
+ 
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Leaflet CSS for Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+</head>
+<body>
+  <header>
+    <div class="logo-title">
+      <img src="logo.png" alt="Explore World Logo" class="logo" />
+      <h1>Explore World</h1>
+    </div>
+    <button class="menu-toggle">&#9776;</button>
+    <nav aria-label="Main Navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="tips.html">Tips</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <video autoplay muted loop playsinline>
+        <source src="video.mp4" type="video/mp4">
+      </video>
+      <div class="hero-content">
+        <h1>Explore the World with Us</h1>
+        <p>Travel to see life from a new perspective</p>
+        <a href="destinations.html" class="btn">Start Exploring</a>
+      </div>
+    </section>
+
+    <!-- World Map Section -->
+    <!-- World Map Section -->
+<section class="world-map">
+  <h2>Explore Our Destinations</h2>
+  <div id="map"></div>
+</section>
+
+
+    <!-- Hotel Rentals Section -->
+    <section class="hotel-rentals">
+      <h2>Book Your Stay</h2>
+      <p>Browse through our exclusive hotel offers and book your stay for your next adventure.</p>
+      <div class="hotel-grid">
+        <article class="hotel-card">
+          <div class="hotel-image" style="background-image: url('hotel1.jpg');"></div>
+          <div class="hotel-content">
+            <h3>The Grand Mountain Resort</h3>
+            <p>A luxurious mountain resort offering breathtaking views and world-class amenities.</p>
+            <div class="hotel-price">
+              <span>₹29,999/night</span>
+              <a href="hotelbook.html" class="btn">Book Now</a>
+            </div>
+          </div>
+        </article>
+        <article class="hotel-card">
+          <div class="hotel-image" style="background-image: url('hotel2.jpg');"></div>
+          <div class="hotel-content">
+            <h3>Beachfront Paradise</h3>
+            <p>Enjoy the serenity of the beach with exclusive access to a private coastline.</p>
+            <div class="hotel-price">
+              <span>₹24,000/night</span>
+              <a href="hotelbook.html" class="btn">Book Now</a>
+            </div>
+          </div>
+        </article>
+        <article class="hotel-card">
+          <div class="hotel-image" style="background-image: url('hotel3.jpg');"></div>
+          <div class="hotel-content">
+            <h3>Desert Oasis</h3>
+            <p>Stay in a beautiful oasis in the heart of the desert with exceptional service and amenities.</p>
+            <div class="hotel-price">
+              <span>₹30,000/night</span>
+              <a href="hotelbook.html" class="btn">Book Now</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Explore World Adventures. All rights reserved.</p>
+  </footer>
+
+  <!-- Leaflet JS for Map -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+  <!-- Map Initialization Script -->
+  <script>
+    // Initialize the map
+    var map = L.map('map').setView([20, 0], 2); // Set view to world map
+
+    // Add OpenStreetMap Tile Layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Add Custom Markers for Destinations
+    var destinations = [
+      {
+        name: 'The Grand Canyon',
+        lat: 36.1069,
+        lon: -112.1129,
+        description: 'Explore the breathtaking Grand Canyon.'
+      },
+      {
+        name: 'Eiffel Tower',
+        lat: 48.8584,
+        lon: 2.2945,
+        description: 'Visit the iconic Eiffel Tower in Paris.'
+      },
+      {
+        name: 'Mount Fuji',
+        lat: 35.3606,
+        lon: 138.7274,
+        description: 'Experience the beauty of Mount Fuji in Japan.'
+      }
+    ];
+
+    // Add markers for each destination
+    destinations.forEach(function(destination) {
+      L.marker([destination.lat, destination.lon]).addTo(map)
+        .bindPopup('<b>' + destination.name + '</b><br>' + destination.description);
+    });
+  </script>
+</body>
+</html>
